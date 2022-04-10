@@ -28,7 +28,7 @@
 
         else{
             include_once("Connection.php");
-            $us = pg_real_escape_string($conn, $us);
+            $us = pg_escape_string($conn, $us);
             $pass = md5($pa);
             $res = pg_query($conn, "SELECT username, password, state FROM public.customer WHERE username='$us' AND password='$pass'")
             or die(pg_error($conn));
