@@ -31,7 +31,7 @@
         if(isset($_GET["id"]))
         {
         $id=$_GET["id"];
-        pg_query($conn, "DELETE from public.category WHERE cat_id='$id'");
+        pg_query($conn, "DELETE FROM public.category WHERE cat_id='$id'");
         }
     }
     ?>
