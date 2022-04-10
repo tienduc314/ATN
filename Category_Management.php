@@ -63,8 +63,8 @@
               <td class="cotCheckBox"><?php echo $No;?></td>
               <td><?php echo $row["cat_name"];?></td>
               <td><?php echo $row["cat_des"];?></td>
-              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["cat_id"];?>"><img src='images/edit.png' border='0'  /></a></td>
-              <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["Cat_ID"];?>" onclick="return deleteConfirm()"><img src='images/delete.png' border='0' /></a></td>
+              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["cat_id"];?>"><img src='images/edit.png' border='0' width="50" height="50" /></a></td>
+              <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["Cat_ID"];?>" onclick="return deleteConfirm()"><img src='images/delete.png' border='0' width="50" height="50" /></a></td>
             </tr>
 
             <?php
