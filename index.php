@@ -43,7 +43,7 @@
   
     <?php
         session_start();
-        include_once("connection.php"); 
+        include_once("Connection.php"); 
     ?>
 
    <header id="header"><!--header-->

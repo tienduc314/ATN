@@ -1,5 +1,5 @@
 <?php
-include_once("connection.php");
+include_once("Connection.php");
 ?>
     <!-- Slider -->
     <div class="slider-area">	
@@ -59,15 +59,15 @@ include_once("connection.php");
 				            <!--Một sản phẩm -->
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="product-imgs/<?php echo $row['Pro_image']?>" width="150" height="150">
+                                    <img src="product-imgs/<?php echo $row['pro_image']?>" width="150" height="150">
                                     <div class="product-hover">
                                         <a href="index.php" class="add-to-cart-link" ><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                         <a href="index.php" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
-                                <h2><a href="index.php"><?php echo  $row['Product_Name']?></a></h2>
+                                <h2><a href="index.php"><?php echo  $row['product_name']?></a></h2>
                                 <div class="product-carousel-price">
-                                    <ins><?php echo  $row['Price']?></ins> <del><?php echo  $row['oldPrice']?></del>
+                                    <ins><?php echo  $row['Price']?></ins> <del><?php echo  $row['oldprice']?></del>
                                 </div> 
                             </div>               
                 <?php
