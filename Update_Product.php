@@ -38,6 +38,107 @@
 		$category= $row['cat_id'];
 ?>
 
+<?php
+	}	
+	else {
+		echo '<meta http-equiv="Refresh" content="0; URL=?page=product_management"/>';
+	}
+?>
+
+<?php	
+	if(isset($_POST["btnUpdate"]))
+	{
+		$id=$_POST["txtID"];
+		$proname=$_POST["txtName"];
+		$short=$_POST['txtShort'];
+		$detail=$_POST['txtDetail'];
+		$price=$_POST['txtPrice'];
+		$qty=$_POST['txtQty'];
+		$pic=$_FILES['txtImage'];
+		$category=$_POST['CategoryList'];
+		$err="";
+
+		if(trim($id)=="")
+		{
+			$err .="<li>Enter Product ID, please</li>";
+		}
+		if(trim($proname)=="")
+		{
+			$err .= "<li>Enter product name,please</li>";
+		}
+		if($category=="0")
+		{
+			$err .= "<li>Choose product category,please</li>";
+		}
+		if(!is_numeric($price))
+		{
+			$err .= "<li>Product price must be number</li>";
+		}
+		if(!is_numeric($qty))
+		{
+			$err .= "<li>Product quantity must be number</li>";
+		}
+		if($err != "")
+		{
+			echo "<ul>$err</ul>";
+		}
+		else
+		{
+			if($pic['name'] !="")
+			{
+				if($pic['type']=="image/jpg" || $pic['type']=="image/jpeg" || $pic['type']=="image/png" || $pic['type']=="image/git" || $pic['type']=="image/jfif")
+				{
+					if($pic['size']<= 614400)
+					{
+						$sq="SELECT * FROM public.product WHERE product_id != '$id' and product_name='$proname'";
+						$result = pg_query($conn,$sq);
+						if(pg_num_rows($result)==0)
+						{
+						copy($pic['tmp_name'], "product-imgs/".$pic['name']);
+						$filePic = $pic['name'];
+
+						$sqlstring="UPDATE product SET product_name='$proname', price=$price, smalldesc='$short',
+						detaildesc='$detail', pro_qty=$qty, pro_image='$filePic', cat_id='$category' WHERE product_id='$id'";
+						pg_query($conn,$sqlstring);
+						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+						}
+						else 
+						{
+							echo "<li>Duplicate productId or Name</li>";
+						}
+					}
+					else 
+					{
+						echo "Size of image to big";
+					}	
+				}
+				else 
+				{
+					echo "Image format is not correct";
+				}
+			}
+			else
+			{
+				$sq="SELECT * FROM public.product where product_id != '$id' and product_name='$proname'";
+				$result= pg_query($conn, $sq);
+				if(pg_num_rows($result)==0)
+				{
+					$sqlstring="UPDATE product SET product_name='$proname',
+					price=$price,smalldesc='$short',detaildesc='$detail',pro_qty=$qty,
+					cat_id='$category' WHERE product_id='$id'";
+
+					pg_query($conn,$sqlstring);
+					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+				}
+				else 
+				{	
+					echo "<li>Duplicate productId or Name</li>";
+				}
+			}
+		} 
+	}
+?>
+
 <div class="container">
 	<h2>Updating Product</h2>
 
@@ -128,103 +229,3 @@
 				</div>
 			</form>
 </div>
-<?php
-	}	
-	else 
-	{
-		echo '<meta http-equiv="Refresh" content="0; URL=?page=product_management"/>';
-	}
-?>
-<?php	
-	if(isset($_POST["btnUpdate"]))
-	{
-		$id=$_POST["txtID"];
-		$proname=$_POST["txtName"];
-		$short=$_POST['txtShort'];
-		$detail=$_POST['txtDetail'];
-		$price=$_POST['txtPrice'];
-		$qty=$_POST['txtQty'];
-		$pic=$_FILES['txtImage'];
-		$category=$_POST['CategoryList'];
-		$err="";
-
-		if(trim($id)=="")
-		{
-			$err .="<li>Enter Product ID, please</li>";
-		}
-		if(trim($proname)=="")
-		{
-			$err .= "<li>Enter product name,please</li>";
-		}
-		if($category=="0")
-		{
-			$err .= "<li>Choose product category,please</li>";
-		}
-		if(!is_numeric($price))
-		{
-			$err .= "<li>Product price must be number</li>";
-		}
-		if(!is_numeric($qty))
-		{
-			$err .= "<li>Product quantity must be number</li>";
-		}
-		if($err != "")
-		{
-			echo "<ul>$err</ul>";
-		}
-		else
-		{
-			if($pic['name'] !="")
-			{
-				if($pic['type']=="image/jpg" || $pic['type']=="image/jpeg" || $pic['type']=="image/png" || $pic['type']=="image/git" )
-				{
-					if($pic['size']<= 614400)
-					{
-						$sq="SELECT * FROM public.product WHERE product_id != '$id' and product_name='$proname'";
-						$result = pg_query($conn,$sq);
-						if(pg_num_rows($result)==0)
-						{
-						copy($pic['tmp_name'], "product-imgs/".$pic['name']);
-						$filePic = $pic['name'];
-
-						$sqlstring="UPDATE product SET product_name='$proname', price=$price, smalldesc='$short',
-						detaildesc='$detail', pro_qty=$qty, pro_image='$filePic', cat_id='$category' WHERE product_id='$id'";
-						pg_query($conn,$sqlstring);
-						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
-						}
-						else 
-						{
-							echo "<li>Duplicate productId or Name</li>";
-						}
-					}
-					else 
-					{
-						echo "Size of image to big";
-					}	
-				}
-				else 
-				{
-					echo "Image format is not correct";
-				}
-			}
-			else
-			{
-				$sq="SELECT * FROM public.product where product_id != '$id' and product_name='$proname'";
-				$result= pg_query($conn,$sq);
-				if(pg_num_rows($result)==0)
-				{
-					$sqlstring="UPDATE product SET product_name='$proname',
-					price=$price,smalldesc='$short',detaildesc='$detail',pro_qty=$qty,
-					cat_id='$category' WHERE Product_ID='$id'";
-
-					pg_query($conn,$sqlstring);
-					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
-				}
-				else 
-				{	
-					echo "<li>Duplicate productId or Name</li>";
-				}
-			}
-		} 
-	}
-?>

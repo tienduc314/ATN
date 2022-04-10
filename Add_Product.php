@@ -1,16 +1,16 @@
 <!-- Bootstrap -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
-	<?php
+<?php
 	include_once("Connection.php");
 	function bind_Category_List($conn){
-		$sqlstring = "SELECT cat_id, cat_name FROM category";
+		$sqlstring = "SELECT cat_id, cat_name FROM public.category";
 		$result = pg_query($conn, $sqlstring);
-		echo"<SELECT name='CategoryList' class='form-control'>
-				<option value='0'>Choose category</option>";
-				while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
-					echo"<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
-				}
+		echo"<select name='CategoryList' class='form-control'>
+			<option value='0'>Choose category</option>";
+			while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+				echo"<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
+			}
 		echo "</select>";
 	}
 
@@ -47,7 +47,7 @@
 		}
 
 		else{
-			if($pic['type']=="image/jpg" || $pic['type']=="image/jpeg" || $pic['type']=="image/png" || $pic['type']=="image/gif"){
+			if($pic['type']=="image/jpg" || $pic['type']=="image/jpeg" || $pic['type']=="image/png" || $pic['type']=="image/gif" || $pic['type']=="image/jfif"){
 				if($pic['size'] <= 614400)
 				{
 					$sq = "SELECT * from public.product where product_id='$id' or product_name = '$proname'";
@@ -76,10 +76,8 @@
 			}
 		}
 	}
-
-
-
 ?>
+
 <div class="container">
 	<h2>Adding new Product</h2>
 
