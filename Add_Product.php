@@ -56,8 +56,8 @@
 					{
 						copy($pic['tmp_name'], "product-imgs/".$pic['name']);
 						$filePic = $pic['name'];
-						$sqlstring = "INSERT INTO product(product_id, product_name, price, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id)
-						Values('$id', '$proname', $price, '$short', '$detail', '".date('Y-m-d H:i:s')."',$qty, '$filePic', '$category')";
+						$sqlstring = "INSERT INTO product(product_id, product_name, price, smalldesc, detaildesc, pro_qty, pro_image, cat_id)
+						Values('$id', '$proname', $price, '$short', '$detail', $qty, '$filePic', '$category')";
 
 						pg_query($conn, $sqlstring);
 						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
