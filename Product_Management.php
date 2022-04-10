@@ -7,16 +7,16 @@
     else
     {
 ?>
-<script language="javascript">
-    function deleteConfirm(){
-        if(confirm("Are you sure to delete?")){
-            return true;
+    <script language="javascript">
+        function deleteConfirm(){
+            if(confirm("Are you sure to delete?")){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        else{
-            return false;
-        }
-    }
-</script>    
+    </script>    
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -26,7 +26,7 @@
         <p>
         	<img src="images/add.png" alt="Add new" width="16" height="16" border="0" /><a href="?page=add_product"> Add new</a>
         </p>
-        <table id="tableproduct" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="tableproduct" class="table table-striped table-bordered" cellspacing="0" width="70%">
             <thead>
                 <tr>
                     <th><strong>No.</strong></th>
@@ -60,7 +60,7 @@
                 $No=1;
                 $result = pg_query($conn, "SELECT product_id, product_name, price, pro_qty, pro_image, cat_name FROM public.product a, public.category b WHERE a.cat_id = b.cat_id");
                 while($row=pg_fetch_array($result, NULL, PGSQL_ASSOC)){
-                    ?>
+            ?>
                 			
 			<tr>
               <td><?php echo $No; ?></td>
