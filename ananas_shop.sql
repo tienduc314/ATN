@@ -1,148 +1,149 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
+-- version 5.1.3
+-- SQLINES DEMO *** admin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2021 at 05:27 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- SQLINES DEMO *** Apr 09, 2022 at 05:15 PM
+-- SQLINES DEMO *** 0.4.24-MariaDB
+-- PHP Version: 7.4.28
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+/* SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; */
 START TRANSACTION;
-SET time_zone = "+00:00";
+time_zone := "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ananas_shop`
---
-
--- --------------------------------------------------------
+/* SQLINES DEMO *** ARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/* SQLINES DEMO *** ARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/* SQLINES DEMO *** LLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/* SQLINES DEMO *** tf8mb4 */;
 
 --
--- Table structure for table `category`
+-- SQLINES DEMO *** _shop`
 --
 
-CREATE TABLE `category` (
-  `Cat_ID` varchar(10) NOT NULL,
-  `Cat_Name` varchar(30) NOT NULL,
-  `Cat_Des` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Dumping data for table `category`
+-- SQLINES DEMO *** or table `category`
 --
 
-INSERT INTO `category` (`Cat_ID`, `Cat_Name`, `Cat_Des`) VALUES
-('C001', 'Vintas - High Top', 'Ananas product'),
-('C002', 'Vintas - Low Top', 'Ananas product');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(40) NOT NULL,
-  `CustName` varchar(30) NOT NULL,
-  `gender` int(11) NOT NULL,
-  `Address` varchar(1000) NOT NULL,
-  `telephone` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `CusDate` int(11) NOT NULL,
-  `CusMonth` int(11) NOT NULL,
-  `CusYear` int(11) NOT NULL,
-  `SSN` varchar(10) DEFAULT NULL,
-  `ActiveCode` varchar(100) NOT NULL,
-  `state` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE TABLE category (
+  Cat_ID varchar(10) NOT NULL,
+  Cat_Name varchar(30) NOT NULL,
+  Cat_Des varchar(1000) DEFAULT NULL
+) ;
 
 --
--- Dumping data for table `customer`
+-- SQLINES DEMO *** table `category`
 --
 
-INSERT INTO `customer` (`Username`, `Password`, `CustName`, `gender`, `Address`, `telephone`, `email`, `CusDate`, `CusMonth`, `CusYear`, `SSN`, `ActiveCode`, `state`) VALUES
+INSERT INTO category (Cat_ID, Cat_Name, Cat_Des) VALUES
+('C001', 'LEGO', 'ATN product'),
+('C002', 'BABIE', 'ATN product');
+
+-- SQLINES DEMO *** ---------------------------------------
+
+--
+-- SQLINES DEMO *** or table `customer`
+--
+
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE TABLE customer (
+  Username varchar(20) NOT NULL,
+  Password varchar(40) NOT NULL,
+  CustName varchar(30) NOT NULL,
+  gender int NOT NULL,
+  Address varchar(1000) NOT NULL,
+  telephone varchar(50) NOT NULL,
+  email varchar(50) NOT NULL,
+  CusDate int NOT NULL,
+  CusMonth int NOT NULL,
+  CusYear int NOT NULL,
+  SSN varchar(10) DEFAULT NULL,
+  ActiveCode varchar(100) NOT NULL,
+  state int NOT NULL
+) ;
+
+--
+-- SQLINES DEMO *** table `customer`
+--
+
+INSERT INTO customer (Username, Password, CustName, gender, Address, telephone, email, CusDate, CusMonth, CusYear, SSN, ActiveCode, state) VALUES
 ('admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 0, '146B mau than', '0337905287', 'admin@gmail.com', 20, 5, 1988, '', '', 1),
 ('duc', 'e10adc3949ba59abbe56e057f20f883e', 'nguyen tien duc', 0, '146B mau than', '0777555444', 'tienduc314@gmail.com', 19, 5, 1992, '', '', 0),
 ('user', 'e10adc3949ba59abbe56e057f20f883e', 'user', 0, 'Can Tho', '0337905287', 'user@gmail.com', 19, 8, 2001, '', '', 0);
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Table structure for table `product`
+-- SQLINES DEMO *** or table `product`
 --
 
-CREATE TABLE `product` (
-  `Product_ID` varchar(10) NOT NULL,
-  `Product_Name` varchar(30) NOT NULL,
-  `Price` bigint(20) NOT NULL,
-  `oldPrice` decimal(12,2) NOT NULL,
-  `SmallDesc` varchar(1000) NOT NULL,
-  `DetailDesc` text NOT NULL,
-  `ProDate` datetime NOT NULL,
-  `Pro_qty` int(11) NOT NULL,
-  `Pro_image` varchar(200) NOT NULL,
-  `Cat_ID` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE TABLE product (
+  Product_ID varchar(10) NOT NULL,
+  Product_Name varchar(30) NOT NULL,
+  Price bigint NOT NULL,
+  oldPrice decimal(12,2) NOT NULL,
+  SmallDesc varchar(1000) NOT NULL,
+  DetailDesc text NOT NULL,
+  ProDate timestamp(0) NOT NULL,
+  Pro_qty int NOT NULL,
+  Pro_image varchar(200) NOT NULL,
+  Cat_ID varchar(10) NOT NULL
+) ;
 
 --
--- Dumping data for table `product`
+-- SQLINES DEMO *** table `product`
 --
 
-INSERT INTO `product` (`Product_ID`, `Product_Name`, `Price`, `oldPrice`, `SmallDesc`, `DetailDesc`, `ProDate`, `Pro_qty`, `Pro_image`, `Cat_ID`) VALUES
-('P001', 'Vintas Temperate', 770, '800.00', 'Chocolate Brown', '', '2021-05-07 06:32:28', 5, 'pro1.jpg', 'C001'),
-('P0010', 'Vintas Saigon 1980s', 480, '550.00', 'Vin Black', '', '2021-05-07 07:04:21', 5, 'pro10.jpg', 'C002'),
-('P0011', 'Vintas Yesterday', 330, '450.00', 'Taupe Leather ', '', '2021-05-07 07:04:21', 5, 'pro11.jpg', 'C002'),
-('P0012', 'Vintas Saigon 1980s', 495, '700.00', 'Dark Denim ', '', '2021-05-07 07:06:40', 5, 'pro012.jpg', 'C001'),
-('P002', 'Vintas Bleached Sand', 550, '700.00', 'Roasted Sand', '', '2021-05-07 06:41:45', 5, 'pro02.jpg', 'C001'),
-('P003', 'Vintas Mister', 610, '750.00', 'Chocolate Brown', '', '2021-05-07 06:45:20', 5, 'pro3.jpg', 'C002'),
-('P004', 'Vintas Temperate', 720, '800.00', 'Dusty Olive', '', '2021-05-07 06:45:20', 5, 'pro4.jpg', 'C002'),
-('P005', 'Vintas Bleached Sand', 465, '500.00', 'Bleached Sand', '', '2021-05-07 06:56:12', 5, 'pro5.jpg', 'C002'),
-('P006', 'Vintas The New Military', 465, '550.00', 'Capulet Olive', '', '2021-05-07 06:58:23', 5, 'pro6.jpg', 'C002'),
-('P007', 'Vintas Earth', 580, '700.00', 'Dark Olive', '', '2021-05-07 06:58:23', 5, 'pro7.jpg', 'C002'),
-('P008', 'Vintas Mister', 465, '750.00', 'Slate Carafe ', '', '2021-05-07 07:00:59', 5, 'pro8.jpg', 'C002'),
-('P009', 'Vintas Mister', 580, '800.00', 'Narcissuede', '', '2021-05-07 07:00:59', 5, 'pro9.jpg', 'C002');
+INSERT INTO product (Product_ID, Product_Name, Price, oldPrice, SmallDesc, DetailDesc, ProDate, Pro_qty, Pro_image, Cat_ID) VALUES
+('01', 'Mandalore Building', 500, '0.00', 'LEGO Star Wars Duel on Mandalore 75310 Building Kit', '', '2022-04-09 16:49:54', 12, 'starwar.jfif', 'C001'),
+('02', 'Troopers Building', 505, '0.00', 'LEGO Star Wars 501st Legion Clone Troopers Building Kit, Cool Action Set for Creative Play 75280', '', '2022-04-09 16:49:47', 21, 'starwar2.jfif', 'C001'),
+('03', 'Batch Shuttle', 300, '0.00', 'LEGO Star Wars The Bad Batch Shuttle 75314', '', '2022-04-09 16:48:07', 17, 'batchshuttle.jfif', 'C001'),
+('04', 'BrickHeadz', 399, '0.00', 'LEGO BrickHeadz Star Wars The Mandalorian & The Child 75317', '', '2022-04-09 16:48:57', 19, 'brickheadz.jfif', 'C001'),
+('05', 'Mandalorian', 790, '0.00', 'LEGO Star Wars Mandalorian Battle Pack Shock Troopers and Speeder Bike Building Kit 75267', '', '2022-04-09 16:51:48', 15, 'mandalorian.jfif', 'C001'),
+('06', 'Barbie doll', 680, '0.00', 'Barbie Dreamtopia Rainbow Magic Mermaid Doll', '', '2022-04-09 16:53:15', 23, 'rainbow.jfif', 'C002'),
+('07', '​Barbie Careers', 899, '0.00', '​Barbie Careers Space Discovery Dolls & Science Classroom Playset', '', '2022-04-09 16:54:12', 20, 'careers.jfif', 'C002'),
+('08', 'Puppy', 350, '0.00', 'Barbie Puppy Party Doll and Playset', '', '2022-04-09 17:00:18', 20, 'puppyparty.jfif', 'C002'),
+('09', 'Chelsea', 540, '0.00', 'Barbie and Chelsea the Lost Birthday Splashtastic Pool Surprise Playset', '', '2022-04-09 17:06:37', 7, 'chelsea.jfif', 'C002'),
+('10', 'Babie Doctor', 550, '0.00', 'Barbie You Can Be Anything Baby Doctor Blonde Doll and Playset', '', '2022-04-09 17:08:50', 9, 'doctor.jfif', 'C002');
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`Cat_ID`);
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`Username`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`Product_ID`),
-  ADD KEY `Cat_ID` (`Cat_ID`);
-
---
--- Constraints for dumped tables
+-- SQLINES DEMO *** d tables
 --
 
 --
--- Constraints for table `product`
+-- SQLINES DEMO ***  `category`
 --
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`Cat_ID`) REFERENCES `category` (`Cat_ID`);
+ALTER TABLE category
+  ADD PRIMARY KEY (Cat_ID);
+
+--
+-- SQLINES DEMO ***  `customer`
+--
+ALTER TABLE customer
+  ADD PRIMARY KEY (Username);
+
+--
+-- SQLINES DEMO ***  `product`
+--
+ALTER TABLE product
+  ADD PRIMARY KEY (Product_ID),
+  ADD KEY `Cat_ID` (Cat_ID);
+
+--
+-- SQLINES DEMO *** umped tables
+--
+
+--
+-- SQLINES DEMO *** able `product`
+--
+ALTER TABLE product
+  ADD CONSTRAINT product_ibfk_1 FOREIGN KEY (Cat_ID) REFERENCES category (Cat_ID);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/* SQLINES DEMO *** ER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/* SQLINES DEMO *** ER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/* SQLINES DEMO *** ON_CONNECTION=@OLD_COLLATION_CONNECTION */;
