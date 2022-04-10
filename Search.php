@@ -1,7 +1,7 @@
 <div class="container"></div>
 <div class="container">
     <?php
-		include_once("connection.php");
+		include_once("Connection.php");
         if (isset($_POST["txtSearch"])) {
             $data = $_POST['txtSearch'];
             if($data==""){
