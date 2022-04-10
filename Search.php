@@ -9,26 +9,26 @@
                 echo '<meta http-equiv="refresh" content="0;URL=index.php">';
             }
             else {
-	  			$result = mysqli_query($conn, "SELECT * FROM product where Product_ID like '%".$data."%' or Product_Name like '%".$data."%'");
-    		    if(mysqli_num_rows($result)==0) {
+	  			$result = pg_query($conn, "SELECT * FROM public.product where product_id like '%".$data."%' or product_name like '%".$data."%'");
+    		    if(pg_num_rows($result)==0) {
                     echo  "<script>alert('No find Value. Please Enter Again!')</script>";
                     echo '<meta http-equiv="refresh" content="0;URL=index.php">';
                 }
                 else {
                     if (!$result) { //add this check.
-                        die('Invalid query: ' . mysqli_error($conn));
+                        die('Invalid query: ' . pg_error($conn));
                     }
                     else {			                   
-                    //<!--Display product-->
-                        while($row = mysqli_fetch_assoc($result)){
+                    //Display product
+                        while($row = pg_fetch_assoc($result)){
                             ?>
                             <div class="col-4">
                                 <div class="card">
-                                <img src="./product-imgs/<?php echo $row ['Pro_image'] ?>" class="card-img-top" alt="..." width="200" height="200" >
+                                <img src="./product-imgs/<?php echo $row ['pro_image'] ?>" class="card-img-top" alt="..." width="200" height="200" >
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo  $row['Product_Name']?></h5>
-                                        <p class="card-text">Price: $<?php echo  $row['Price']?></p>
-                                        <p class="card-text"><?php echo  $row['DetailDesc']?></p>
+                                        <h5 class="card-title"><?php echo  $row['product_name']?></h5>
+                                        <p class="card-text">Price: $<?php echo  $row['price']?></p>
+                                        <p class="card-text"><?php echo  $row['detaildesc']?></p>
                                         <a href="?page=index" class="btn btn-primary">Buy</a>
                                     </div>
                                 </div>

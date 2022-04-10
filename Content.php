@@ -50,11 +50,11 @@ include_once("connection.php");
                         
                            <?php
 						   	include_once("Connection.php");
-		  				   	$result = mysqli_query($conn, "SELECT * FROM product");
+		  				   	$result = pg_query($conn, "SELECT * FROM public.product");
 			                if (!$result) { //add this check.
-                                die('Invalid query: ' . mysqli_error($conn));
+                                die('Invalid query: ' . pg_error($conn));
                             }
-			                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+			                while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
 				            ?>
 				            <!--Một sản phẩm -->
                             <div class="single-product">

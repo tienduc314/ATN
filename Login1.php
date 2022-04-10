@@ -28,12 +28,12 @@
 
         else{
             include_once("Connection.php");
-            $us = mysqli_real_escape_string($conn, $us);
+            $us = pg_real_escape_string($conn, $us);
             $pass = md5($pa);
-            $res = mysqli_query($conn, "SELECT Username, Password, state FROM Customer WHERE Username='$us' AND Password='$pass'")
-            or die(mysqli_error($conn));
-            $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-            if(mysqli_num_rows($res)==1){
+            $res = pg_query($conn, "SELECT username, password, state FROM public.customer WHERE username='$us' AND password='$pass'")
+            or die(pg_error($conn));
+            $row = pg_fetch_array($res, NULL, PGSQL_ASSOC);
+            if(pg_num_rows($res)==1){
                 $_SESSION["us"]=$us;
                 $_SESSION["admin"]=$row["state"];
                 echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';

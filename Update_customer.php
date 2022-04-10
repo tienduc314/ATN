@@ -1,14 +1,14 @@
 <?php
 //Get custmer information
-$query = "select CustName, Address, email, telephone from customer
-			where Username = '" . $_SESSION["us"] . "'";
-$result =mysqli_query($conn, $query) or die(mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$query = "SELECT custname, address, email, telephone FROM public.customer
+			WHERE username = '" . $_SESSION["us"] . "'";
+$result =pg_query($conn, $query) or die(pg_error($conn));
+$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 $us = $_SESSION["us"];
 $email = $row["email"];
-$fullname = $row["CustName"];
-$address = $row["Address"];
+$fullname = $row["custname"];
+$address = $row["address"];
 $telephone = $row["telephone"];
 
 //Update information when the user presses the "Update" button
@@ -23,16 +23,16 @@ if(isset($_POST['btnUpdate'])){
 		if($_POST['txtPass1']!=""){
 			$pass = md5($_POST['txtPass1']);
 
-			$sq = "Update customer set CustName='$fullname', Address = '$address',
-			telephone='$telephone', Password='$pass' where Username='".$_SESSION['us']. "'";
+			$sq = "UPDATE customer SET custname='$fullname', address = '$address',
+			telephone='$telephone', password='$pass' WHERE username='".$_SESSION['us']. "'";
 
-			mysqli_query($conn, $sq) or die(mysqli_error($conn));
+			pg_query($conn, $sq) or die(pg_error($conn));
 		}
 		else{
-			$sq = "Update customer set CustName='$fullname', Address = '$address',
-			telephone='$telephone', Password='$pass' where Username='".$_SESSION['us']. "'";
+			$sq = "UPDATE customer SET custname='$fullname', address = '$address',
+			telephone='$telephone', password='$pass' WHERE username='".$_SESSION['us']. "'";
 
-			mysqli_query($conn, $sq) or die(mysqli_error($conn));
+			pg_query($conn, $sq) or die(pg_error($conn));
 		}
 		echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
 	}
@@ -63,7 +63,6 @@ if(isset($_POST['btnUpdate'])){
 <div class="container">
 	
 <h2>Update Profile</h2>
-
 			 	<form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
 					<div class="form-group">
 						    
