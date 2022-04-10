@@ -25,7 +25,7 @@
         if($err != ""){
             echo $err;
         }
-
+ 
         else{
             include_once("Connection.php");
             $us = pg_escape_string($conn, $us);
