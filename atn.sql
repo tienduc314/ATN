@@ -104,7 +104,7 @@ INSERT INTO product (Product_ID, Product_Name, Price, SmallDesc, DetailDesc, Pro
 ('05', 'Mandalorian', 790, 'LEGO Star Wars Mandalorian Battle Pack Shock Troopers and Speeder Bike Building Kit 75267', '', 15, 'mandalorian.png', 'C001'),
 ('06', 'Barbie doll', 680, 'Barbie Dreamtopia Rainbow Magic Mermaid Doll', '', 23, 'rainbow.png', 'C002'),
 ('07', '​Barbie Careers', 899, '​Barbie Careers Space Discovery Dolls & Science Classroom Playset', '', 20, 'careers.png', 'C002'),
-('08', 'Puppy', 350, 'Barbie Puppy Party Doll and Playset', '', '2022-04-09 17:00:18', 20, 'puppyparty.png', 'C002'),
+('08', 'Puppy', 350, 'Barbie Puppy Party Doll and Playset', '', 20, 'puppyparty.png', 'C002'),
 ('09', 'Chelsea', 540, 'Barbie and Chelsea the Lost Birthday Splashtastic Pool Surprise Playset', '', 7, 'chelsea.png', 'C002'),
 ('10', 'Babie Doctor', 550, 'Barbie You Can Be Anything Baby Doctor Blonde Doll and Playset', '', 9, 'doctor.png', 'C002');
 
