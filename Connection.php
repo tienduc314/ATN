@@ -1,4 +1,4 @@
 <?php
-    $conn = pg_connect("postgres://vpdrjcqrwvvcqy:344c8737a25b07158aa9503ea81b016ed9272f6a7c415c9bbea3e6f837c111ad@ec2-34-194-158-176.compute-1.amazonaws.com:5432/dc3pj98koi2n5u")
+    $conn = pg_connect("postgres://gpfcgsidrkqkfh:2563ab31a7befea3318efad14c18993be392aaf890c66ad30c79abaf426d6970@ec2-44-194-4-127.compute-1.amazonaws.com:5432/d3dvm2f7qmgu8b")
         or die("Cannot connect database".pg_connect_error());
 ?>

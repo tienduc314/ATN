@@ -23,8 +23,7 @@
 	if(isset($_GET["id"]))
 	{
 		$id = $_GET["id"];
-		$sqlstring = "SELECT product_name, price, smalldesc, detaildesc,
-		pro_qty, pro_image, cat_id FROM public.product WHERE product_id = '$id' ";
+		$sqlstring = "SELECT product_name, price, smalldesc, detaildesc, pro_qty, pro_image, cat_id FROM public.product WHERE product_id = '$id' ";
 
 		$result = pg_query($conn, $sqlstring);
 		$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
