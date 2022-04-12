@@ -11,7 +11,7 @@
             else {
 	  			$result = pg_query($conn, "SELECT * FROM public.product where product_id like '%".$data."%' or product_name like '%".$data."%'");
     		    if(pg_num_rows($result)==0) {
-                    echo  "<script>alert('No find Value. Please Enter Again!')</script>";
+                    echo "<script>alert('No find Value. Please Enter Again!')</script>";
                     echo '<meta http-equiv="refresh" content="0;URL=index.php">';
                 }
                 else {
@@ -20,7 +20,7 @@
                     }
                     else {			                   
                     //Display product
-                        while($row = pg_fetch_assoc($result)){
+                        while($row = pg_fetch_assoc($result NULL, PGSQL_ASSOC)){
                             ?>
                             <div class="col-4">
                                 <div class="card">
