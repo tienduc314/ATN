@@ -97,16 +97,16 @@ CREATE TABLE product (
 --
 
 INSERT INTO product (Product_ID, Product_Name, Price, SmallDesc, DetailDesc, Pro_qty, Pro_image, Cat_ID) VALUES
-('01', 'Mandalore Building', 500, 'LEGO Star Wars Duel on Mandalore 75310 Building Kit', '', 12, 'starwar.jfif', 'C001'),
-('02', 'Troopers Building', 505, 'LEGO Star Wars 501st Legion Clone Troopers Building Kit, Cool Action Set for Creative Play 75280', '', 21, 'starwar2.jfif', 'C001'),
-('03', 'Batch Shuttle', 300, 'LEGO Star Wars The Bad Batch Shuttle 75314', '', 17, 'batchshuttle.jfif', 'C001'),
-('04', 'BrickHeadz', 399, 'LEGO BrickHeadz Star Wars The Mandalorian & The Child 75317', '', 19, 'brickheadz.jfif', 'C001'),
-('05', 'Mandalorian', 790, 'LEGO Star Wars Mandalorian Battle Pack Shock Troopers and Speeder Bike Building Kit 75267', '', 15, 'mandalorian.jfif', 'C001'),
-('06', 'Barbie doll', 680, 'Barbie Dreamtopia Rainbow Magic Mermaid Doll', '', 23, 'rainbow.jfif', 'C002'),
-('07', '​Barbie Careers', 899, '​Barbie Careers Space Discovery Dolls & Science Classroom Playset', '', 20, 'careers.jfif', 'C002'),
-('08', 'Puppy', 350, 'Barbie Puppy Party Doll and Playset', '', '2022-04-09 17:00:18', 20, 'puppyparty.jfif', 'C002'),
-('09', 'Chelsea', 540, 'Barbie and Chelsea the Lost Birthday Splashtastic Pool Surprise Playset', '', 7, 'chelsea.jfif', 'C002'),
-('10', 'Babie Doctor', 550, 'Barbie You Can Be Anything Baby Doctor Blonde Doll and Playset', '', 9, 'doctor.jfif', 'C002');
+('01', 'Mandalore Building', 500, 'LEGO Star Wars Duel on Mandalore 75310 Building Kit', '', 12, 'starwar.png', 'C001'),
+('02', 'Troopers Building', 505, 'LEGO Star Wars 501st Legion Clone Troopers Building Kit, Cool Action Set for Creative Play 75280', '', 21, 'starwar2.png', 'C001'),
+('03', 'Batch Shuttle', 300, 'LEGO Star Wars The Bad Batch Shuttle 75314', '', 17, 'batchshuttle.png', 'C001'),
+('04', 'BrickHeadz', 399, 'LEGO BrickHeadz Star Wars The Mandalorian & The Child 75317', '', 19, 'brickheadz.png', 'C001'),
+('05', 'Mandalorian', 790, 'LEGO Star Wars Mandalorian Battle Pack Shock Troopers and Speeder Bike Building Kit 75267', '', 15, 'mandalorian.png', 'C001'),
+('06', 'Barbie doll', 680, 'Barbie Dreamtopia Rainbow Magic Mermaid Doll', '', 23, 'rainbow.png', 'C002'),
+('07', '​Barbie Careers', 899, '​Barbie Careers Space Discovery Dolls & Science Classroom Playset', '', 20, 'careers.png', 'C002'),
+('08', 'Puppy', 350, 'Barbie Puppy Party Doll and Playset', '', '2022-04-09 17:00:18', 20, 'puppyparty.png', 'C002'),
+('09', 'Chelsea', 540, 'Barbie and Chelsea the Lost Birthday Splashtastic Pool Surprise Playset', '', 7, 'chelsea.png', 'C002'),
+('10', 'Babie Doctor', 550, 'Barbie You Can Be Anything Baby Doctor Blonde Doll and Playset', '', 9, 'doctor.png', 'C002');
 
 --
 -- SQLINES DEMO *** d tables
