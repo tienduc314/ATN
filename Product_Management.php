@@ -63,16 +63,17 @@
             ?>
                 			
 			<tr>
-              <td><?php echo $No; ?></td>
-              <td><?php echo $row["product_id"]; ?></td>
-              <td><?php echo $row["product_name"]; ?></td>
-              <td><?php echo $row["price"]; ?></td>
-              <td><?php echo $row["pro_qty"]; ?></td>
-              <td><?php echo $row["cat_name"]; ?></td>
-             <td align='center' class='cotNutChucNang'>
-                 <img src='product-imgs/<?php echo $row['Pro_image'] ?>' border='0' width="50" height="50"  /></td>
-             <td align='center' class='cotNutChucNang'><a href="?page=update_product&&function=del&&id=<?php echo $row["product_id"];?>"><img src='images/edit.png' border='0'width="20" height="20"/></a></td>
-             <td align='center' class='cotNutChucNang'><a href="?page=product_management&&function=del&&id=<?php echo $row["product_id"];?>" onclick="return deleteConfirm()"><img src='images/delete.png' border='0' width="20" height="20"/></a></td>
+                <td><?php echo $No; ?></td>
+                <td><?php echo $row["product_id"]; ?></td>
+                <td><?php echo $row["product_name"]; ?></td>
+                <td><?php echo $row["price"]; ?></td>
+                <td><?php echo $row["pro_qty"]; ?></td>
+                <td><?php echo $row["pro_image"]; ?></td>
+                <td><?php echo $row["cat_name"]; ?></td>
+                <td align='center' class='cotNutChucNang'>
+                <img src='product-imgs/<?php echo $row['Pro_image'] ?>' border='0' width="50" height="50"  /></td>
+                <td align='center' class='cotNutChucNang'><a href="?page=update_product&&function=del&&id=<?php echo $row["product_id"];?>"><img src='images/edit.png' border='0'width="20" height="20"/></a></td>
+                <td align='center' class='cotNutChucNang'><a href="?page=product_management&&function=del&&id=<?php echo $row["product_id"];?>" onclick="return deleteConfirm()"><img src='images/delete.png' border='0' width="20" height="20"/></a></td>
             </tr>
             <?php
                $No++;
