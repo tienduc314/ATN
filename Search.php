@@ -28,7 +28,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo  $row['product_name']?></h5>
                                         <p class="card-text">Price: $<?php echo  $row['price']?></p>
-                                        <p class="card-text"><?php echo  $row['detaildesc']?></p>
+                                        <p class="card-text"><?php echo  $row['smalldesc']?></p>
                                         <a href="?page=index" class="btn btn-primary">Buy</a>
                                     </div>
                                 </div>
