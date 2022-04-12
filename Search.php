@@ -21,7 +21,7 @@
                     else {			                   
                     //Display product
                         while($row = pg_fetch_assoc($result NULL, PGSQL_ASSOC)){
-                            ?>
+    ?>
                             <div class="col-4">
                                 <div class="card">
                                 <img src="./product-imgs/<?php echo $row ['pro_image'] ?>" class="card-img-top" alt="..." width="200" height="200" >
@@ -39,5 +39,5 @@
                 }
             }
         }
-    ?>
+                            ?>
 </div>
