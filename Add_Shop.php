@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
  
 
-  <title>Dery</title>
 </head>
 
 <body>
@@ -39,15 +38,15 @@
 			}
             else
 			{
-				$id = htmlspecialchars(mysqli_escape_string($conn,$id));
-				$name = htmlspecialchars(mysqli_escape_string($conn,$name));
-				$des = htmlspecialchars(mysqli_escape_string($conn,$des));
+				$id = htmlspecialchars(pg_escape_string($conn,$id));
+				$name = htmlspecialchars(pg_escape_string($conn,$name));
+				$des = htmlspecialchars(pg_escape_string($conn,$des));
 				$sq="SELECT * FROM public.shops where shop_id = '$id' or shop_name = '$name'";
-				$result = mysqli_query($conn,$sq);
-			if (mysqli_num_rows($result)==0)
+				$result = pg_query($conn,$sq);
+			if (pg_num_rows($result)==0)
 			{
 				$sqlstring = "INSERT INTO shop (shop_id, shop_name, phone, email, address) VALUES ('$id','$name','$phone','$email','$address')";
-				mysqli_query($conn, $sqlstring);
+				pg_query($conn, $sqlstring);
 				echo '<meta http-equiv="refresh" content="0;URL=?page=shop_management"/>';
 			}
 			else

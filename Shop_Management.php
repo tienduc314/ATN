@@ -47,13 +47,13 @@
                 if (isset($_GET["function"]) == "del") {
                     if (isset($_GET["id"])) {
                       $id = $_GET["id"];
-                      mysqli_query($conn, "DELETE FROM shop WHERE shop_id='$id'");
+                      pg_query($conn, "DELETE FROM shop WHERE shop_id='$id'");
                     }
                 }
 
                 $No=1;
-                $result = mysqli_query($conn, "SELECT shop_id, shop_name, address, phone, email FROM shop");
-                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $result = pg_query($conn, "SELECT shop_id, shop_name, address, phone, email FROM shop");
+                while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
             ?>       			
                     <tr>
                     <td><?php echo $No; ?></td>

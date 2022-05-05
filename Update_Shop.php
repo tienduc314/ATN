@@ -8,9 +8,9 @@
 		{
 			$id = $_GET["id"];
 
-            $sqlstring = "SELECT * FROM shop where shop_id='$id'";
-            $result = mysqli_query($conn, $sqlstring);
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $sqlstring = "SELECT * FROM shop WHERE shop_id='$id'";
+            $result = pg_query($conn, $sqlstring);
+            $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 			$id = $row['shop_id'];
 			$name = $row['shop_name'];
@@ -97,10 +97,10 @@
 			else
 			{
 				$sq="SELECT * FROM shop where shop_id != '$id' and shop_name='$name'";
-				$result = mysqli_query($conn, $sq);
-				if(mysqli_num_rows($result)==0)
+				$result = pg_query($conn, $sq);
+				if(pg_num_rows($result)==0)
 				{
-					mysqli_query($conn,"UPDATE shop SET shop_name = '$name', address = '$address', phone = '$phone', email = '$email' where shop_id = '$id'");
+					pg_query($conn,"UPDATE shop SET shop_name = '$name', address = '$address', phone = '$phone', email = '$email' where shop_id = '$id'");
 					echo '<meta http-equiv="Refresh" content="0;URL=?page=shop_management"/>';
 				}
 				else
