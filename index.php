@@ -131,6 +131,7 @@
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="?page=category_management">Category</a></li>
 										<li><a href="?page=product_management">Product</a></li>
+                                        <li><a href="?page=shop_management">Shop</a></li>
                                     </ul>
                                 </li> 
 								<li><a href="index.php">Cart</a></li>
@@ -168,6 +169,9 @@
             elseif($page=="product_management"){
                 include_once("Product_Management.php");
             }
+            elseif($page=="shop_management"){
+                include_once("Shop_Management.php");
+            }
             elseif($page=="add_category"){
                 include_once("Add_Category.php");
             }
@@ -183,8 +187,14 @@
             elseif($page=="update_product"){
                 include_once("Update_Product.php");
             }
+            elseif($page=="add_shop"){
+                include_once("Add_Shop.php");
+            }
+            elseif($page=="update_shop"){
+                include_once("Update_Shop.php");
+            }
             elseif($page=="update_customer"){
-                include_once("Update_Customer.php");
+                include_once("Update_customer.php");
             }
             elseif($page=="search"){
                 include_once("Search.php");

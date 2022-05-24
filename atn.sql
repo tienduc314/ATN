@@ -8,8 +8,7 @@
 -- PHP Version: 7.4.28
 
 /* SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; */
-START TRANSACTION;
--- time_zone := "+00:00";
+
 
 
 /* SQLINES DEMO *** ARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,26 +16,23 @@ START TRANSACTION;
 /* SQLINES DEMO *** LLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /* SQLINES DEMO *** tf8mb4 */;
 
---
--- SQLINES DEMO *** _shop`
---
 
 -- SQLINES DEMO *** ---------------------------------------
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
-CREATE TABLE `shop` (
+CREATE TABLE shop (
   shop_id varchar(10) NOT NULL,
   shop_name varchar(30) NOT NULL,
   address varchar(30) NOT NULL,
   phone varchar(50) NOT NULL,
   email varchar(50) NOT NULL
-); ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
 
 --
 -- SQLINES DEMO *** table `shop`
 --
 
-INSERT INTO `shop` (shop_id, shop_name, address, phone, email) VALUES
+INSERT INTO shop (shop_id, shop_name, address, phone, email) VALUES
 ('S001', 'ATN_CanTho', 'Can Tho', '0123456789', 'atn_cantho@gmail.com'),
 ('S002', 'ATN_HaNoi', 'Ha Noi', '0123456789', 'atn_hanoi@gmail.com');
 
@@ -108,24 +104,25 @@ CREATE TABLE product (
   DetailDesc text NOT NULL,
   Pro_qty int NOT NULL,
   Pro_image varchar(200) NOT NULL,
-  Cat_ID varchar(10) NOT NULL
+  Cat_ID varchar(10) NOT NULL,
+  shop_id varchar(10) NOT NULL
 ) ;
 
 --
 -- SQLINES DEMO *** table `product`
 --
 
-INSERT INTO product (Product_ID, Product_Name, Price, SmallDesc, DetailDesc, Pro_qty, Pro_image, Cat_ID) VALUES
-('P001', 'Mandalore Building', 500, 'LEGO Star Wars Duel on Mandalore 75310 Building Kit', '', 12, 'starwar.png', 'C001'),
-('P002', 'Troopers Building', 505, 'LEGO Star Wars 501st Legion Clone Troopers Building Kit, Cool Action Set for Creative Play 75280', '', 21, 'starwar2.png', 'C001'),
-('P003', 'Batch Shuttle', 300, 'LEGO Star Wars The Bad Batch Shuttle 75314', '', 17, 'batchshuttle.png', 'C001'),
-('P004', 'BrickHeadz', 399, 'LEGO BrickHeadz Star Wars The Mandalorian & The Child 75317', '', 19, 'brickheadz.png', 'C001'),
-('P005', 'Mandalorian', 790, 'LEGO Star Wars Mandalorian Battle Pack Shock Troopers and Speeder Bike Building Kit 75267', '', 15, 'mandalorian.png', 'C001'),
-('P006', 'Barbie doll', 680, 'Barbie Dreamtopia Rainbow Magic Mermaid Doll', '', 23, 'rainbow.png', 'C002'),
-('P007', '​Barbie Careers', 899, '​Barbie Careers Space Discovery Dolls & Science Classroom Playset', '', 20, 'careers.png', 'C002'),
-('P008', 'Puppy', 350, 'Barbie Puppy Party Doll and Playset', '', 20, 'puppyparty.png', 'C002'),
-('P009', 'Chelsea', 540, 'Barbie and Chelsea the Lost Birthday Splashtastic Pool Surprise Playset', '', 7, 'chelsea.png', 'C002'),
-('P010', 'Babie Doctor', 550, 'Barbie You Can Be Anything Baby Doctor Blonde Doll and Playset', '', 9, 'doctor.png', 'C002');
+INSERT INTO product (Product_ID, Product_Name, Price, SmallDesc, DetailDesc, Pro_qty, Pro_image, Cat_ID, shop_id) VALUES
+('P001', 'Mandalore Building', 500, 'LEGO Star Wars Duel on Mandalore 75310 Building Kit', '', 12, 'starwar.png', 'C001', 'S001'),
+('P002', 'Troopers Building', 505, 'LEGO Star Wars 501st Legion Clone Troopers Building Kit, Cool Action Set for Creative Play 75280', '', 21, 'starwar2.png', 'C001', 'S001'),
+('P003', 'Batch Shuttle', 300, 'LEGO Star Wars The Bad Batch Shuttle 75314', '', 17, 'batchshuttle.png', 'C001', 'S001'),
+('P004', 'BrickHeadz', 399, 'LEGO BrickHeadz Star Wars The Mandalorian & The Child 75317', '', 19, 'brickheadz.png', 'C001', 'S001'),
+('P005', 'Mandalorian', 790, 'LEGO Star Wars Mandalorian Battle Pack Shock Troopers and Speeder Bike Building Kit 75267', '', 15, 'mandalorian.png', 'C001', 'S002'),
+('P006', 'Barbie doll', 680, 'Barbie Dreamtopia Rainbow Magic Mermaid Doll', '', 23, 'rainbow.png', 'C002', 'S002'),
+('P007', 'Barbie Careers', 899, 'Barbie Careers Space Discovery Dolls & Science Classroom Playset', '', 20, 'careers.png', 'C002', 'S001'),
+('P008', 'Puppy', 350, 'Barbie Puppy Party Doll and Playset', '', 20, 'puppyparty.png', 'C002', 'S001'),
+('P009', 'Chelsea', 540, 'Barbie and Chelsea the Lost Birthday Splashtastic Pool Surprise Playset', '', 7, 'chelsea.png', 'C002', 'S001'),
+('P010', 'Babie Doctor', 550, 'Barbie You Can Be Anything Baby Doctor Blonde Doll and Playset', '', 9, 'doctor.png', 'C002', 'S002');
 
 --
 -- SQLINES DEMO *** d tables
@@ -136,7 +133,6 @@ INSERT INTO product (Product_ID, Product_Name, Price, SmallDesc, DetailDesc, Pro
 --
 ALTER TABLE shop
   ADD PRIMARY KEY (shop_id);
-
 
 --
 -- SQLINES DEMO ***  `category`
@@ -155,18 +151,12 @@ ALTER TABLE customer
 --
 ALTER TABLE product
   ADD PRIMARY KEY (Product_ID),
-  ADD FOREIGN KEY (Cat_ID) REFERENCES category (Cat_ID);
+  ADD FOREIGN KEY (Cat_ID) REFERENCES category (Cat_ID),
+  ADD FOREIGN KEY (shop_id) REFERENCES shop (shop_id);	
 
 --
 -- SQLINES DEMO *** umped tables
 --
-
---
--- SQLINES DEMO *** able `product`
---
-ALTER TABLE product
-  ADD CONSTRAINT product_ibfk_1 FOREIGN KEY (Cat_ID) REFERENCES category (Cat_ID);
-COMMIT;
 
 /* SQLINES DEMO *** ER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /* SQLINES DEMO *** ER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

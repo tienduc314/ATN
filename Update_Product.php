@@ -20,10 +20,27 @@
 		echo "</select>";
 	}
 
+	Function bind_Shop_List($conn,$selectedValue){
+		$sqlstring="SELECT shop_id, shop_name FROM public.shop";
+		$result = pg_query($conn, $sqlstring);
+		echo "<select name='ShopList' class='form-control'>
+			<option value='0'>Chose shop</option>";
+			while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+				if($row['shop_id'] == $selectedValue)
+				{
+					echo "<option value='".$row['shop_id']."' selected>".$row['shop_name']."</option>";
+				}
+				else{
+					echo "<option value='".$row['shop_id']."'>".$row['shop_name']."</option>";
+				}
+			}
+		echo "</select>";
+	}
+
 	if(isset($_GET["id"]))
 	{
 		$id = $_GET["id"];
-		$sqlstring = "SELECT product_name, price, smalldesc, detaildesc, pro_qty, pro_image, cat_id FROM public.product WHERE product_id = '$id' ";
+		$sqlstring = "SELECT product_name, price, smalldesc, detaildesc, pro_qty, pro_image, cat_id, shop_id FROM public.product WHERE product_id = '$id' ";
 
 		$result = pg_query($conn, $sqlstring);
 		$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
@@ -35,6 +52,7 @@
 		$qty=$row['pro_qty'];
 		$pic =$row['pro_image'];
 		$category= $row['cat_id'];
+		$shop= $row['shop_id'];
 ?>
 
 <?php
@@ -55,6 +73,7 @@
 		$qty=$_POST['txtQty'];
 		$pic=$_FILES['txtImage'];
 		$category=$_POST['CategoryList'];
+		$shop=$_POST['ShopList'];
 		$err="";
 
 		if(trim($id)=="")
@@ -97,7 +116,7 @@
 						$filePic = $pic['name'];
 
 						$sqlstring="UPDATE product SET product_name='$proname', price=$price, smalldesc='$short',
-						detaildesc='$detail', pro_qty=$qty, pro_image='$filePic', cat_id='$category' WHERE product_id='$id'";
+						detaildesc='$detail', pro_qty=$qty, pro_image='$filePic', cat_id='$category', shop_id='$shop' WHERE product_id='$id'";
 						pg_query($conn,$sqlstring);
 						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 						}
@@ -124,7 +143,7 @@
 				{
 					$sqlstring="UPDATE product SET product_name='$proname',
 					price=$price,smalldesc='$short',detaildesc='$detail',pro_qty=$qty,
-					cat_id='$category' WHERE product_id='$id'";
+					cat_id='$category', shop_id='$shop' WHERE product_id='$id'";
 
 					pg_query($conn,$sqlstring);
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
@@ -162,6 +181,12 @@
 							      <?php bind_Category_List($conn,$category); ?>
 							</div>
                 </div>  
+				<div class="form-group">   
+                    <label for="" class="col-sm-2 control-label">Product shop(*):  </label>
+							<div class="col-sm-10">
+							      <?php bind_Shop_List($conn,$shop); ?>
+							</div>
+                </div> 
                           
                 <div class="form-group">  
                     <label for="lblGia" class="col-sm-2 control-label">Price(*):  </label>
