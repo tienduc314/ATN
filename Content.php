@@ -67,7 +67,7 @@ include_once("Connection.php");
                                 </div>
                                 <h2><a href="index.php"><?php echo  $row['product_name']?></a></h2>
                                 <div class="product-carousel-price">
-                                    <ins><?php echo  $row['price']?></ins> <del></del>
+                                    <ins>$ <?php echo  $row['price']?></ins> <del></del>
                                 </div> 
                             </div>               
                 <?php
